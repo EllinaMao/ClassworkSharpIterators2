@@ -15,14 +15,15 @@
                 new MyClass { Someth = 4 },
                 new MyClass { Someth = 5 },
             };
+
             MyCollection<MyClass> myCollection = new MyCollection<MyClass>(myClasses);
 
-                Console.WriteLine("First iteration:");
+                Console.WriteLine("Первый проход:");
                 foreach (var item in myCollection)
                 {
                     Console.WriteLine(item.Someth);
                 }
-                Console.WriteLine("Second iteration:");
+                Console.WriteLine("Второй:");
                 foreach (var item in myCollection)
                 {
                     Console.WriteLine(item.Someth);
