@@ -7,14 +7,14 @@
         {
             static void Main(string[] args)
             {
-            MyClass[] myClasses = new MyClass[]
-            {
+            MyClass[] myClasses =
+            [
                 new () { Someth = 1 },
                 new () { Someth = 2 },
                 new () { Someth = 3 },
                 new () { Someth = 4 },
                 new () { Someth = 5 },
-            };
+            ];
 
             MyCollection<MyClass> myCollection = new MyCollection<MyClass>(myClasses);
 
