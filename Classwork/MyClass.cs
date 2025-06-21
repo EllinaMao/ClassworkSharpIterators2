@@ -22,8 +22,6 @@ internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
 
     public T[] Items;
     int position = -1;
-    private int count = 0;
-
     public MyCollection(T[] items)
     {
         Items = new T[items.Length];
