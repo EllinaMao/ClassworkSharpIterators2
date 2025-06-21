@@ -28,7 +28,10 @@
                 {
                     Console.WriteLine(item.Someth);
                 }
-  
+
+            Console.WriteLine("Третий елемент: {0}",myCollection[2].Someth); 
+
+
         }
         }
     }
