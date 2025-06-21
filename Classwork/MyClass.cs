@@ -86,6 +86,6 @@ internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
         GC.SuppressFinalize(this);
     }
 
-
+        
 }
 }
