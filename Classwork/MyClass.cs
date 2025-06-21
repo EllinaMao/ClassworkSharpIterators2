@@ -32,14 +32,7 @@ internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
             Items[i] = items[i];
         }
     }
-    public void Add(T item)
-    {
-        if (count >= Items.Length)
-        {
-            Array.Resize(ref Items, Items.Length * 2);
-        }
-        Items[count++] = item;
-    }
+
     IEnumerator IEnumerable.GetEnumerator()
     {
         return GetEnumerator();
