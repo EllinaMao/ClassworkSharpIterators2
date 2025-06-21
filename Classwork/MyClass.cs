@@ -15,7 +15,7 @@ namespace Classwork
         public int Someth{ get; set; }
 
     }
-}
+
 
 internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
     {
@@ -107,4 +107,5 @@ internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
     //    ((IEnumerator)this).Reset();
     //}
 
+}
 }
