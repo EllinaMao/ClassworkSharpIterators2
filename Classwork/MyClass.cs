@@ -22,7 +22,6 @@ internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
 
     public T[] Items;
     int position = -1;
-    private bool disposedValue;
     private int count = 0;
 
     public MyCollection(T[] items)
@@ -76,16 +75,8 @@ internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
 
     protected virtual void Dispose(bool disposing)
     {
-        if (!disposedValue)
-        {
-            if (disposing)
-            {
-                // TODO: dispose managed state (managed objects)
-            }
-
             ((IEnumerator)this).Reset();
-            disposedValue = true;
-        }
+
     }
 
     // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources

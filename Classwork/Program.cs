@@ -28,7 +28,11 @@
                 {
                     Console.WriteLine(item.Someth);
                 }
-
+            foreach (var item in myCollection)
+            {
+                Console.WriteLine(item.Someth);
             }
+
+        }
         }
     }
