@@ -71,16 +71,7 @@ namespace Classwork
             GC.SuppressFinalize(this);
         }
 
-        //public object Clone()
-        //{
-        //    T[] Items2 = new T[Items.Length];
-        //    for (int i = 0; i < Items.Length; i++)
-        //    {
-        //        Items2[i] = Items[i];
-        //    }
 
-        //    return new MyCollection<T>(Items2);
-        //}
         public object Clone()
         {
             return new MyCollection<T>(Items);
