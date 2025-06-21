@@ -73,20 +73,18 @@ namespace Classwork
 
         //public object Clone()
         //{
-        //    return Items.Clone();
-        //}
+        //    T[] Items2 = new T[Items.Length];
+        //    for (int i = 0; i < Items.Length; i++)
+        //    {
+        //        Items2[i] = Items[i];
+        //    }
 
+        //    return new MyCollection<T>(Items2);
+        //}
         public object Clone()
         {
-            T[] Items2 = new T[Items.Length];
-            for (int i = 0; i < Items.Length; i++)
-            {
-                Items2[i] = Items[i];
-            }
-
-            return new MyCollection<T>(Items2);
+            return new MyCollection<T>(Items);
         }
-
         public T this[int index]
         {
             get
