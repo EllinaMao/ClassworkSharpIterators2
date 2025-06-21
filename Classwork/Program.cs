@@ -16,7 +16,7 @@
                 new () { Someth = 5 },
             ];
 
-            MyCollection<MyClass> myCollection = new MyCollection<MyClass>(myClasses);
+            MyCollection<MyClass> myCollection = new (myClasses);
 
                 Console.WriteLine("Первый проход:");
                 foreach (var item in myCollection)
