@@ -1,0 +1,110 @@
+﻿using Classwork;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+//1. Створіть клас MyClass, в якому створіть автовластивість типу int. Створіть клас MyCollection<T>, який реалізує основний функціонал колекції елементів.При створенні MyCollection <T> використовуйте успадкування та реалізацію IEnumerable<T>, IEnumerator<T>.У методі Main наповніть екземпляр колекції елементами MyClass, виконувати двічі обхід цієї колекції з виведенням на екран значень автовластивості елементів колекції.
+
+namespace Classwork
+{
+    internal class MyClass
+    {
+        public int Someth{ get; set; }
+
+    }
+}
+
+internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
+    {
+
+    public T[] Items;
+    int position = -1;
+    private bool disposedValue;
+    private int count = 0;
+
+    public MyCollection(T[] items)
+    {
+        Items = new T[items.Length];
+        for (int i = 0; i < items.Length; i++)
+        {
+            Items[i] = items[i];
+        }
+    }
+    public void Add(T item)
+    {
+        if (count >= Items.Length)
+        {
+            Array.Resize(ref Items, Items.Length * 2);
+        }
+        Items[count++] = item;
+    }
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+    public IEnumerator<T> GetEnumerator()
+    {
+        return this;
+    }
+
+    bool IEnumerator.MoveNext()
+    {
+        if (position < Items.Length - 1)
+        {
+            position++;
+            return true;
+        }
+        return false;
+    }
+
+    void IEnumerator.Reset()
+    {
+        position = -1;
+    }
+
+    object IEnumerator.Current
+    {
+        get { return Items[position]; }
+    }
+    public T Current
+    {
+        get { return Items[position]; }
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposedValue)
+        {
+            if (disposing)
+            {
+                // TODO: dispose managed state (managed objects)
+            }
+
+            ((IEnumerator)this).Reset();
+            disposedValue = true;
+        }
+    }
+
+    // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+    // ~MyCollection()
+    // {
+    //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+    //     Dispose(disposing: false);
+    // }
+
+    public void Dispose()
+    {
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
+    }
+
+    //protected virtual void Dispose(bool disposing)
+    //{
+    //    ((IEnumerator)this).Reset();
+    //}
+
+}
