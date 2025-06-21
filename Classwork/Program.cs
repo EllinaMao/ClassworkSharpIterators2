@@ -29,7 +29,16 @@
                     Console.WriteLine(item.Someth);
                 }
 
-            Console.WriteLine("Третий елемент: {0}",myCollection[2].Someth); 
+            Console.WriteLine("Третий елемент: {0}",myCollection[2].Someth);
+
+
+            MyCollection<MyClass> myCollection2 = (MyCollection<MyClass>)myCollection.Clone();
+
+            Console.WriteLine("Клон:");
+            foreach (var item in myCollection2)
+            {
+                Console.WriteLine(item.Someth);
+            }
 
 
         }

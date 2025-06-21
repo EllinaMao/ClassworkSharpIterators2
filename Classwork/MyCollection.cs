@@ -8,81 +8,98 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 //1. Створіть клас MyClass, в якому створіть автовластивість типу int. Створіть клас MyCollection<T>, який реалізує основний функціонал колекції елементів.При створенні MyCollection <T> використовуйте успадкування та реалізацію IEnumerable<T>, IEnumerator<T>.У методі Main наповніть екземпляр колекції елементами MyClass, виконувати двічі обхід цієї колекції з виведенням на екран значень автовластивості елементів колекції.
 
-
-internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
+namespace Classwork
+{
+    internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>, ICloneable
     {
 
-    public T[] Items;
-    int position = -1;
-    public MyCollection(T[] items)
-    {
-        Items = new T[items.Length];
-        for (int i = 0; i < items.Length; i++)
+        public T[] Items;
+        int position = -1;
+        public MyCollection(T[] items)
         {
-            Items[i] = items[i];
+            Items = new T[items.Length];
+            for (int i = 0; i < items.Length; i++)
+            {
+                Items[i] = items[i];
+            }
         }
-    }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
-    public IEnumerator<T> GetEnumerator()
-    {
-        return this;
-    }
-
-    bool IEnumerator.MoveNext()
-    {
-        if (position < Items.Length - 1)
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            position++;
-            return true;
+            return GetEnumerator();
         }
-        return false;
-    }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
 
-    void IEnumerator.Reset()
-    {
-        position = -1;
-    }
+        bool IEnumerator.MoveNext()
+        {
+            if (position < Items.Length - 1)
+            {
+                position++;
+                return true;
+            }
+            return false;
+        }
 
-    object IEnumerator.Current
-    {
-        get { return Items[position]; }
-    }
+        void IEnumerator.Reset()
+        {
+            position = -1;
+        }
 
-    public T Current
-    {
-        get { return Items[position]; }
-    }
+        object IEnumerator.Current
+        {
+            get { return Items[position]; }
+        }
 
-    protected virtual void Dispose(bool disposing)
-    {
+        public T Current
+        {
+            get { return Items[position]; }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
             ((IEnumerator)this).Reset();
 
-    }
-
-    public void Dispose()
-    {
-        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-        Dispose(disposing: true);
-        GC.SuppressFinalize(this);
-    }
-
-
-    public T this[int index]
-    {
-        get
-        {
-            return Items[index];
         }
-        set
+
+        public void Dispose()
         {
-            Items[index] = value;
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
+
+        //public object Clone()
+        //{
+        //    return Items.Clone();
+        //}
+
+        public object Clone()
+        {
+            T[] Items2 = new T[Items.Length];
+            for (int i = 0; i < Items.Length; i++)
+            {
+                Items2[i] = Items[i];
+            }
+
+            return new MyCollection<T>(Items2);
+        }
+
+        public T this[int index]
+        {
+            get
+            {
+                return Items[index];
+            }
+            set
+            {
+                Items[index] = value;
+            }
+        }
+
+
+
     }
-
-
-
 }
