@@ -84,5 +84,5 @@ internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
     }
 
 
-    }
+
 }
