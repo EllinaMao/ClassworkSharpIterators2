@@ -9,11 +9,11 @@
             {
             MyClass[] myClasses = new MyClass[]
             {
-        new MyClass { Someth = 1 },
-        new MyClass { Someth = 2 },
-        new MyClass { Someth = 3 },
-        new MyClass { Someth = 4 },
-        new MyClass { Someth = 5 },
+                new MyClass { Someth = 1 },
+                new MyClass { Someth = 2 },
+                new MyClass { Someth = 3 },
+                new MyClass { Someth = 4 },
+                new MyClass { Someth = 5 },
             };
             MyCollection<MyClass> myCollection = new MyCollection<MyClass>(myClasses);
 
