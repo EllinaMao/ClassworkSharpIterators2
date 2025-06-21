@@ -68,6 +68,7 @@ internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
     {
         get { return Items[position]; }
     }
+
     public T Current
     {
         get { return Items[position]; }
@@ -86,6 +87,19 @@ internal class MyCollection<T> : IEnumerable<T>, IEnumerator<T>
         GC.SuppressFinalize(this);
     }
 
-        
-}
+
+    public T this[int index]
+    {
+        get
+        {
+            return Items[index];
+        }
+        set
+        {
+            Items[index] = value;
+        }
+    }
+
+
+    }
 }
