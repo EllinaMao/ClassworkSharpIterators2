@@ -138,7 +138,41 @@ namespace Classwork
             return false;
         }
 
+        public override int GetHashCode()
+        {
+            return Items?.GetHashCode() ?? 0;
+        }
 
+        public static bool operator ==(MyCollection<T>? left, MyCollection<T>? right)
+        {
+            if (ReferenceEquals(left, right)) return true;
+            if (left is null || right is null) return false;
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(MyCollection<T>? left, MyCollection<T>? right)
+        {
+            return !(left == right);
+        }
+
+        public static bool operator <(MyCollection<T>? left, MyCollection<T>? right)
+        {
+            if (left is null) return right is not null;
+            return left.CompareTo(right) < 0;
+        }
+        public static bool operator >(MyCollection<T>? left, MyCollection<T>? right)
+        {
+            if (left is null) return false;
+            return left.CompareTo(right) > 0;
+        }
+        public static bool operator <=(MyCollection<T>? left, MyCollection<T>? right)
+        {
+            return !(left > right);
+        }
+        public static bool operator >=(MyCollection<T>? left, MyCollection<T>? right)
+        {
+            return !(left < right);
+        }
 
         public T this[int index]
         {
